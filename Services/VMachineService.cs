@@ -20,10 +20,11 @@ namespace vMachine.Services
       Messages.Add("What would you like to do? (a)dd money, (b)uy, or (q)uit?");
     }
 
-    public float AddMoney()
+    public void AddMoney()
     {
       Inventory.Credit += 0.25f;
-      return Messages.Add(Inventory.Credit.ToString());
+      Messages.Add($"You have ${Inventory.Credit} to spend");
+      PrintOptions();
     }
 
     public VMachineService()
