@@ -1,4 +1,5 @@
 ﻿using System;
+using vMachine.Controllers;
 
 namespace vMachine
 {
@@ -6,7 +7,9 @@ namespace vMachine
   {
     static void Main(string[] args)
     {
-      Console.WriteLine("Hello World!");
+      Console.Clear();
+      var vMC = new VMachineController();
+      vMC.Run();
     }
   }
 }
