@@ -5,7 +5,7 @@ namespace vMachine.Models
 {
   class Snack : Food, IPurchasable
   {
-    public Snack(float price, string title, int kCals) : base(price, title, kCals)
+    public Snack(int quantity, float price, string title, int kCals) : base(quantity, price, title, kCals)
     { }
   }
 }

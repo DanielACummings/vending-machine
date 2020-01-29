@@ -34,10 +34,15 @@ namespace vMachine.Services
       {
         Messages.Add($"You don't have enough money to buy {Inventory.Products[selection].Title}");
       }
+      else if (Inventory.Products[selection].Quantity < 1)
+      {
+        Messages.Add($"{Inventory.Products[selection].Title} out of stock");
+      }
       else
       {
-        Messages.Add($"You purchased one {Inventory.Products[selection].Title}");
+        Messages.Add($"Purchased: {Inventory.Products[selection].Title}");
         Inventory.Credit -= Inventory.Products[selection].Price;
+        Inventory.Products[selection].Quantity--;
       }
     }
 

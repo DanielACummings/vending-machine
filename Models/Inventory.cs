@@ -10,10 +10,10 @@ namespace vMachine.Interfaces
 
     private void Setup()
     {
-      var android = new ElecDevice(3.00f, "Android(on sale)", "Mini-USB");
-      var winPhone = new ElecDevice(4.00f, "Windows Phone(on sale)", "Micro-USB");
-      var chips = new Snack(1.50f, "Sun Chips", 150);
-      var dots = new Candy(0.75f, "Dots", 100);
+      var android = new ElecDevice(3, 3.00f, "Android(on sale)", "Mini-USB");
+      var winPhone = new ElecDevice(3, 4.00f, "Windows Phone(on sale)", "Micro-USB");
+      var chips = new Snack(3, 1.50f, "Sun Chips", 150);
+      var dots = new Candy(3, 0.75f, "Dots", 100);
       Products.AddRange(new IPurchasable[]{
         android, winPhone, chips, dots
       });
