@@ -7,19 +7,17 @@ namespace vMachine.Models
   {
     public float Price { get; set; }
     public string Title { get; set; }
-    public List<string> Ingredients { get; set; }
     int KCals { get; set; }
 
     public string GetInventoryLineItem()
     {
-      return $"{Title}{(KCals)} -- {Price}";
+      return $"{Title} ({KCals} KCals) -- ${Price}";
     }
 
-    public Food(float price, string title, List<string> ingredients, int kCals)
+    public Food(float price, string title, int kCals)
     {
       Price = price;
       Title = title;
-      Ingredients = ingredients;
       KCals = kCals;
     }
   }

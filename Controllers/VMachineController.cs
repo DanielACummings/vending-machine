@@ -1,4 +1,5 @@
 using System;
+using vMachine.Interfaces;
 using vMachine.Services;
 
 namespace vMachine.Controllers
@@ -21,22 +22,25 @@ namespace vMachine.Controllers
 
     private void GetUserInput()
     {
-      var key = Console.ReadKey();
+      var selection = Console.ReadLine();
       Console.Clear();
-      var keyChar = key.KeyChar;
-      switch (keyChar)
+      switch (selection)
       {
-        case 'q':
+        case "q":
           _running = false;
           break;
-        case 'a':
-          Service.AddMoney();
+        case "a":
+          Service.AddDollar();
           break;
-        // case 'b':
-        //   Service.Buy();
-        //   break;
         default:
-          Console.WriteLine("Invalid entry");
+          if (int.TryParse(selection, out int num))
+          {
+            Service.Buy(num - 1);
+          }
+          else
+          {
+            Console.WriteLine("Invalid entry");
+          }
           Service.PrintOptions();
           break;
       }

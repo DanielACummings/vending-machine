@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using vMachine.Interfaces;
 
@@ -10,6 +11,7 @@ namespace vMachine.Services
 
     public void PrintOptions()
     {
+      Messages.Add($"You have ${Inventory.Credit} to spend\n");
       Messages.Add("---Options---");
       int index = 1;
       foreach (var item in Inventory.Products)
@@ -17,14 +19,26 @@ namespace vMachine.Services
         Messages.Add(index.ToString() + ") " + item.GetInventoryLineItem());
         index++;
       }
-      Messages.Add("What would you like to do? (a)dd money, (b)uy, or (q)uit?");
+      Messages.Add("\nYou can purchase an item by typing its number, (a)dd a dollar, or (q)uit");
     }
 
-    public void AddMoney()
+    public void AddDollar()
     {
-      Inventory.Credit += 0.25f;
-      Messages.Add($"You have ${Inventory.Credit} to spend");
+      Inventory.Credit += 1.00f;
       PrintOptions();
+    }
+
+    public void Buy(int selection)
+    {
+      if (Inventory.Products[selection].Price > Inventory.Credit)
+      {
+        Messages.Add($"You don't have enough money to buy {Inventory.Products[selection].Title}");
+      }
+      else
+      {
+        Messages.Add($"You purchased one {Inventory.Products[selection].Title}");
+        Inventory.Credit -= Inventory.Products[selection].Price;
+      }
     }
 
     public VMachineService()
